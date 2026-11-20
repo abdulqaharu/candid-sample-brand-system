@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+:root {
+  --ink-950: #0a0a0a;
+  --ink-900: #111111;
+  --ink-850: #171717;
+  --ink-800: #1f1f1f;
+  --ink-700: #2b2b2b;
+  --ink-600: #3d3d3b;
+  --ink-500: #5e5e5a;
+  --ink-400: #8a8a85;
+  --ink-300: #b4b4ae;
+  --paper-200: #dcdcd5;
+  --paper-100: #ececE6;
+  --paper-50: #f6f6f2;
+  --redline-600: #c8401c;
+  --redline-500: #f2542d;
+  --redline-400: #ff7a57;
+  --redline-100: #fde3da;
+  --draft-600: #3566c8;
+  --draft-500: #5b8def;
+  --draft-300: #9dbbf7;
+  --stamp-600: #177a45;
+  --stamp-500: #2fbf71;
+}
+
+:root,
+[data-theme="light"] {
+  --bg-canvas: var(--paper-50);
+  --bg-surface: var(--paper-100);
+  --bg-raised: var(--paper-200);
+  --border-default: var(--paper-200);
+  --border-strong: var(--ink-300);
+  --text-primary: var(--ink-950);
+  --text-secondary: var(--ink-600);
+  --text-muted: var(--ink-500);
+  --text-on-accent: var(--ink-950);
+  --text-redline: var(--redline-600);
+  --accent-redline: var(--redline-500);
+  --accent-draft: var(--draft-600);
+  --status-verified: var(--stamp-600);
+  --line-drawing: var(--ink-500);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --bg-canvas: var(--ink-950);
+  --bg-surface: var(--ink-900);
+  --bg-raised: var(--ink-800);
+  --border-default: var(--ink-700);
+  --border-strong: var(--ink-600);
+  --text-primary: var(--paper-50);
+  --text-secondary: var(--ink-300);
+  --text-muted: var(--ink-500);
+  --text-on-accent: var(--ink-950);
+  --text-redline: var(--redline-500);
+  --accent-redline: var(--redline-500);
+  --accent-draft: var(--draft-300);
+  --status-verified: var(--stamp-500);
+  --line-drawing: var(--ink-400);
+  color-scheme: dark;
+}
+
+[data-theme] {
+  --grid-minor: color-mix(in oklab, var(--border-default) 55%, transparent);
+  --grid-major: var(--border-default);
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --color-canvas: var(--bg-canvas);
+  --color-surface: var(--bg-surface);
+  --color-raised: var(--bg-raised);
+  --color-line: var(--border-default);
+  --color-line-strong: var(--border-strong);
+  --color-fg: var(--text-primary);
+  --color-fg-2: var(--text-secondary);
+  --color-fg-3: var(--text-muted);
+  --color-on-accent: var(--text-on-accent);
+  --color-redline: var(--accent-redline);
+  --color-redline-text: var(--text-redline);
+  --color-draft: var(--accent-draft);
+  --color-verified: var(--status-verified);
+  --color-drawing: var(--line-drawing);
+
+  --text-display-xl: clamp(4.5rem, 10vw, 9rem);
+  --text-display-xl--line-height: 0.92;
+  --text-display-xl--letter-spacing: -0.04em;
+
+  --text-display-l: clamp(3.5rem, 7.5vw, 6rem);
+  --text-display-l--line-height: 0.98;
+  --text-display-l--letter-spacing: -0.03em;
+
+  --text-h1: clamp(2.5rem, 4.4vw, 3.5rem);
+  --text-h1--line-height: 1.05;
+  --text-h1--letter-spacing: -0.02em;
+
+  --text-h2: clamp(1.75rem, 2.8vw, 2.25rem);
+  --text-h2--line-height: 1.15;
+  --text-h2--letter-spacing: -0.015em;
+
+  --text-h3: 1.5rem;
+  --text-h3--line-height: 1.25;
+  --text-h3--letter-spacing: -0.005em;
+
+  --text-body-l: 1.25rem;
+  --text-body-l--line-height: 1.5;
+  --text-body-l--letter-spacing: -0.002em;
+
+  --text-body-m: 1rem;
+  --text-body-m--line-height: 1.55;
+
+  --text-body-s: 0.875rem;
+  --text-body-s--line-height: 1.5;
+
+  --text-label: 0.75rem;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.04em;
+
+  --text-label-mono: 0.75rem;
+  --text-label-mono--line-height: 1.4;
+  --text-label-mono--letter-spacing: 0.08em;
+
+  --text-code: 0.875rem;
+  --text-code--line-height: 1.5;
+
+  --text-stat: clamp(2.75rem, 5vw, 4rem);
+  --text-stat--line-height: 1;
+  --text-stat--letter-spacing: -0.03em;
+}
+
+.theme-scope {
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+}
+
+.bg-blueprint {
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      var(--grid-major) 0,
+      var(--grid-major) 1px,
+      transparent 1px,
+      transparent 200px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      var(--grid-major) 0,
+      var(--grid-major) 1px,
+      transparent 1px,
+      transparent 200px
+    ),
+    repeating-linear-gradient(
+      to right,
+      var(--grid-minor) 0,
+      var(--grid-minor) 1px,
+      transparent 1px,
+      transparent 40px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      var(--grid-minor) 0,
+      var(--grid-minor) 1px,
+      transparent 1px,
+      transparent 40px
+    );
+}
+
+::selection {
+  background-color: var(--redline-100);
+  color: var(--ink-950);
+}
+
+body {
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    transition: none;
+  }
+}
