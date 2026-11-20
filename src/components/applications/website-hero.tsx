@@ -40,7 +40,7 @@ export function WebsiteHero() {
 
         <div className="mt-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-2">
           <div>
-            <p className="font-mono text-label-mono uppercase text-redline-text">
+            <p className="text-label font-medium uppercase text-redline-text">
               Owner&rsquo;s engineering &middot; Gas-fired power
             </p>
             <h2 className="mt-4 text-h1 text-fg">

@@ -10,7 +10,7 @@ export function SlideProof() {
   return (
     <SlideFrame caption="B &middot; Proof. Three stats, one in Redline." slideNumber={2}>
       <div className="flex h-full flex-col gap-3">
-        <p className="font-mono text-[9px] uppercase tracking-[0.08em] text-fg-3">Why Candid</p>
+        <p className="text-[9px] font-medium uppercase tracking-[0.04em] text-fg-3">Why Candid</p>
         <p className="text-[18px] font-medium leading-tight text-fg">Faster, and it holds up.</p>
         <div className="mt-1 grid grid-cols-3 gap-3">
           {stats.map((stat) => (

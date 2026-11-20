@@ -18,7 +18,7 @@ export function SlideFrame({
       >
         <div className="min-h-0 flex-1">{children}</div>
         <div className="flex items-baseline justify-between">
-          <span className="font-mono text-[8px] uppercase tracking-[0.08em] text-fg-3">
+          <span className="text-[8px] font-medium uppercase tracking-[0.04em] text-fg-3">
             Candid
           </span>
           <span className="text-[8px] text-fg-3">{String(slideNumber).padStart(2, "0")}</span>

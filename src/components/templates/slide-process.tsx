@@ -11,7 +11,7 @@ export function SlideProcess() {
   return (
     <SlideFrame caption="C &middot; Process. Four steps on a timeline." slideNumber={3}>
       <div className="flex h-full flex-col gap-3">
-        <p className="font-mono text-[9px] uppercase tracking-[0.08em] text-fg-3">How it works</p>
+        <p className="text-[9px] font-medium uppercase tracking-[0.04em] text-fg-3">How it works</p>
         <p className="text-[18px] font-medium leading-tight text-fg">
           From constraints to a stamped package.
         </p>

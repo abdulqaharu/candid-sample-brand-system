@@ -24,7 +24,7 @@ export function OnePager() {
         </span>
       </div>
 
-      <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.08em] text-redline-text">
+      <p className="mt-4 text-[10px] font-medium uppercase tracking-[0.04em] text-redline-text">
         Owner&rsquo;s engineering &middot; Gas-fired power
       </p>
       <p className="mt-2 text-[24px] font-medium leading-tight text-fg">
@@ -52,7 +52,7 @@ export function OnePager() {
           <ul className="mt-2 flex flex-col gap-2">
             {steps.map((step) => (
               <li key={step.num} className="flex gap-2">
-                <span className="font-mono text-[9px] text-fg-3">{step.num}</span>
+                <span className="text-[9px] text-fg-3">{step.num}</span>
                 <span>
                   <span className="block text-[11px] font-medium text-fg">{step.title}</span>
                   <span className="text-[9px] text-fg-2">{step.detail}</span>

@@ -13,7 +13,7 @@ export function SlideDeliverables() {
     <SlideFrame caption="D &middot; Deliverables. Codes beside a drawing." slideNumber={4}>
       <div className="flex h-full gap-4">
         <div className="flex flex-1 flex-col gap-2">
-          <p className="font-mono text-[9px] uppercase tracking-[0.08em] text-fg-3">The package</p>
+          <p className="text-[9px] font-medium uppercase tracking-[0.04em] text-fg-3">The package</p>
           <p className="text-[16px] font-medium leading-tight text-fg">
             What you take to your board.
           </p>
