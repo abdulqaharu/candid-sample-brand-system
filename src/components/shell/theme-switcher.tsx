@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useLayoutEffect, useSyncExternalStore } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 const STORAGE_KEY = "candid-theme";
 const EVENT = "candid-theme-change";
@@ -40,6 +40,7 @@ const options: { value: Theme; label: string }[] = [
 
 export function ThemeSwitcher() {
   const theme = useSyncExternalStore(subscribe, readTheme, () => "light" as Theme);
+  const reduced = useReducedMotion();
 
   useLayoutEffect(() => {
     try {
@@ -75,7 +76,7 @@ export function ThemeSwitcher() {
           >
             {selected && (
               <motion.span
-                layoutId="theme-switcher-thumb"
+                layoutId={reduced ? undefined : "theme-switcher-thumb"}
                 className="absolute inset-0 rounded-[6px] border border-line bg-canvas shadow-[0_1px_2px_rgb(0_0_0_/_0.08)]"
                 transition={{ type: "spring", stiffness: 500, damping: 38 }}
               />
