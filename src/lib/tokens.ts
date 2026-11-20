@@ -97,6 +97,7 @@ export type TypeScaleRow = {
   spec: string;
   sample: string;
   mono?: boolean;
+  upper?: boolean;
 };
 
 export const typeScale: TypeScaleRow[] = [
@@ -108,8 +109,8 @@ export const typeScale: TypeScaleRow[] = [
   { name: "Body L", tailwind: "text-body-l", spec: "20 / 150%  -0.2%  REGULAR", sample: "Software evaluates 12 configurations for your site. Engineers take the best one to the next gate." },
   { name: "Body M", tailwind: "text-body-m", spec: "16 / 155%  REGULAR", sample: "Vendor quotes and lead times keep cost and schedule current, right up to delivery." },
   { name: "Body S", tailwind: "text-body-s", spec: "14 / 150%  REGULAR", sample: "Estimate accuracy depends on stage. Class 4 at Pre-FEED, Class 3 at FEED." },
-  { name: "Label", tailwind: "text-label", spec: "12 / 140%  +4%  MEDIUM  UPPER", sample: "Why Candid · How it works · The package" },
-  { name: "Label Mono", tailwind: "text-label-mono", spec: "12 / 140%  +8%  MEDIUM  UPPER", sample: "D05 plot plan · Rev B · Site A", mono: true },
+  { name: "Label", tailwind: "text-label", spec: "12 / 140%  +4%  MEDIUM  UPPER", sample: "Why Candid · How it works · The package", upper: true },
+  { name: "Label Mono", tailwind: "text-label-mono", spec: "12 / 140%  +8%  MEDIUM  UPPER", sample: "D05 plot plan · Rev B · Site A", mono: true, upper: true },
   { name: "Code Mono", tailwind: "text-code", spec: "14 / 150%  REGULAR", sample: "HRSG duty 412.6 MMBtu/hr · GT 2 × 7HA.02", mono: true },
   { name: "Data Stat", tailwind: "text-stat", spec: "64 / 100%  -3%  MEDIUM", sample: "350+ GW" },
 ];

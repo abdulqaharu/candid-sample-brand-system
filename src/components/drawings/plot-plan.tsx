@@ -7,7 +7,7 @@ const labelProps = {
   fontFamily: "var(--font-geist-mono)",
   fontSize: 12,
   letterSpacing: "0.08em",
-  textTransform: "uppercase" as const,
+  style: { textTransform: "uppercase" as const },
 };
 
 export function PlotPlan({
@@ -89,7 +89,7 @@ export function PlotPlan({
           {...labelProps}
           fill="var(--text-primary)"
           opacity={drawn ? 1 : 0}
-          style={{ transition: "opacity 0.3s ease 0.6s" }}
+          style={{ ...labelProps.style, transition: "opacity 0.3s ease 0.6s" }}
         >
           {box.label}
         </text>
