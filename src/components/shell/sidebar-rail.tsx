@@ -16,14 +16,11 @@ const icons: Record<string, Icon> = {
   "/color": { name: "f3f74.svg", width: 13, height: 16, place: "top-[0.85px] left-[2.35px] h-[16.3px] w-[13.3px]" },
   "/typography": { name: "af2d5.svg", width: 16, height: 16, place: "top-[0.85px] left-[0.85px] size-[16.3px]" },
   "/motion": { name: "0cc0c.svg", width: 16, height: 16, place: "top-[0.85px] left-[0.85px] size-[16.3px]" },
-  "/layout": { name: "851af.svg", width: 14, height: 15, place: "top-[1.5px] left-[2.06px] h-[15px] w-[13.875px]" },
+  "/layout": { name: "nav-layout.svg", width: 18, height: 18, place: "top-0 left-0 size-[18px]" },
   "/imagery": { name: "5a0a7.svg", width: 16, height: 16, place: "top-[0.85px] left-[0.85px] size-[16.3px]" },
   "/applications": { name: "040c5.svg", width: 14, height: 16, place: "top-[0.85px] left-[1.9px] h-[16.3px] w-[14.2px]" },
   "/resources": { name: "645f3.svg", width: 18, height: 18, place: "top-0 left-0 size-[18px]" },
 };
-
-/** The one icon drawn solid and dark, so it is softened while inactive. */
-const SOLID = "851af.svg";
 
 /** The collapsed sidebar: logo and one icon per page. */
 export function SidebarRail({ pathname }: { pathname: string }) {
@@ -49,11 +46,7 @@ export function SidebarRail({ pathname }: { pathname: string }) {
           {nav.map((item) => {
             const active = item.href === pathname;
             const icon = icons[item.href];
-            const tone = active
-              ? "brightness-0"
-              : icon.name === SOLID
-                ? "opacity-65 group-hover:opacity-100"
-                : "group-hover:brightness-0";
+            const tone = active ? "brightness-0" : "group-hover:brightness-0";
             return (
               <li key={item.href}>
                 <Link

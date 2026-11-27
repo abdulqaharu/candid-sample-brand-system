@@ -4,6 +4,7 @@ import { Section } from "@/components/ui/section";
 import { CopyButton } from "@/components/ui/copy-button";
 import { Curve } from "@/components/motion/curve";
 import { MotionDemos } from "@/components/motion/demos";
+import { PauseToggle } from "@/components/motion/pause-toggle";
 
 export const metadata: Metadata = { title: "Motion" };
 
@@ -16,6 +17,10 @@ const copies = [
 export default function MotionPage() {
   return (
     <Shell pathname="/motion" title="Motion">
+      {/* Tucked up under the overview. */}
+      <div className="-mt-6 flex pb-2 md:-mt-11">
+        <PauseToggle />
+      </div>
       <Section id="curve" title="Curve" first>
         <div className="grid items-end gap-6 md:grid-cols-2">
           <div className="rounded-lg bg-ui-panel p-6">

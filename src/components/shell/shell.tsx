@@ -1,7 +1,9 @@
 import type { ReactNode } from "react";
 import { PageFooter } from "./page-footer";
 import { PageNav } from "./page-nav";
+import { PageOverview } from "@/components/ui/page-overview";
 import { PageTitle } from "@/components/ui/page-title";
+import { overviews } from "@/lib/overviews";
 
 export function Shell({
   pathname,
@@ -28,7 +30,10 @@ export function Shell({
       {/* The padding makes up the width the sidebar gives away, so content holds still. */}
       <div className="sidebar-motion relative flex flex-1 flex-col lg:pl-[calc(232px-var(--sidebar-width))]">
         <PageNav pathname={pathname} />
-        <div className="mx-auto w-full max-w-[1280px] flex-1 px-5 pb-37.5 sm:px-10">{children}</div>
+        <div className="mx-auto w-full max-w-[1280px] flex-1 px-5 pb-37.5 sm:px-10">
+          {overviews[pathname] && <PageOverview>{overviews[pathname]}</PageOverview>}
+          {children}
+        </div>
       </div>
       <div className="pt-30">
         <PageFooter pathname={pathname} />

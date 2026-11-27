@@ -157,6 +157,8 @@ html[data-dragging] {
 
   /* Fixed brand colors, for swatches and artwork that never change with theme. */
   --color-brand-ink: var(--ink-950);
+  --color-brand-ink-800: var(--ink-800);
+  --color-brand-ink-700: var(--ink-700);
   --color-brand-ink-600: var(--ink-600);
   --color-brand-ink-500: var(--ink-500);
   --color-brand-ink-400: var(--ink-400);
@@ -208,6 +210,69 @@ html[data-dragging] {
 
   @supports not selector(::-webkit-scrollbar) {
     scrollbar-width: none;
+  }
+}
+
+/* The first-visit intro. The class is set before first paint, in <head>. */
+.intro-root {
+  display: none;
+  width: 100%;
+}
+
+html.candid-intro .intro-root {
+  display: block;
+}
+
+/* The page waits at its top, in view, so the intro can hand over to it without a shift. */
+html.candid-intro #app {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+html.candid-intro.candid-intro-bare {
+  scrollbar-gutter: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  #app {
+    right: var(--intro-gutter, 0px);
+  }
+}
+
+/* The mark is on its way to this logo, which takes over when the intro ends. */
+html.candid-intro [data-brand-mark] {
+  visibility: hidden;
+}
+
+/* The intro's idle loops, before the first scroll. */
+.intro-blink {
+  animation: intro-blink 1060ms steps(1, end) infinite;
+}
+
+.intro-bob {
+  animation: intro-bob 1.6s cubic-bezier(0.32, 0.72, 0, 1) infinite;
+}
+
+@keyframes intro-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes intro-bob {
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-blink,
+  .intro-bob {
+    animation: none;
   }
 }
 

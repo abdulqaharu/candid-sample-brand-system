@@ -40,10 +40,6 @@ function Caption({ x, y, name, size, margin }: { x: number; y: number; name: str
   );
 }
 
-function Logo() {
-  return <div className="absolute top-[427.8px] left-[122.6px] h-[28.6px] w-23 bg-ui-block" />;
-}
-
 const slides: { label: string; art: ReactNode }[] = [
   {
     label: "An A4 page with a 13 mm margin on each side.",
@@ -67,45 +63,6 @@ const slides: { label: string; art: ReactNode }[] = [
         <Page x={470.5} y={339.7} w={247.3} h={139.3} />
         <Caption x={470.5} y={487.5} name="16:9" size="1920 × 1080 px" margin="Margin 65 px" />
       </>
-    ),
-  },
-  {
-    label: "The logo placed at the bottom center of the page.",
-    art: (
-      <Page {...single}>
-        <Logo />
-      </Page>
-    ),
-  },
-  {
-    label: "A headline and short line of text set at the top left of the page.",
-    art: (
-      <Page {...single}>
-        <div className="absolute top-5 left-5">
-          <p className="text-[64.4px] leading-[0.92] font-medium tracking-[-0.03em]">
-            Concept
-            <br />
-            to FID.
-          </p>
-          <p className="w-36 pt-5 text-[12.5px] leading-[1.3] tracking-[-0.01em]">
-            PE-stamped packages for gas-fired power.
-          </p>
-        </div>
-      </Page>
-    ),
-  },
-  {
-    label: "A drawing area across the top, then a headline and the logo.",
-    art: (
-      <Page {...single}>
-        <div className="absolute inset-x-0 top-0 h-[238px] bg-ui-block" />
-        <p className="absolute top-[258.6px] left-5 text-[42.2px] leading-[0.92] font-medium tracking-[-0.03em]">
-          Concept
-          <br />
-          to FID.
-        </p>
-        <Logo />
-      </Page>
     ),
   },
 ];

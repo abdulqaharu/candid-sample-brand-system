@@ -59,7 +59,7 @@ export function TypeTester() {
           display={weightNames[weight]}
           min={400}
           max={500}
-          step={100}
+          step={1}
           onChange={setWeight}
         />
       </div>

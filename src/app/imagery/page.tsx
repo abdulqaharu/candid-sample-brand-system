@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Shell } from "@/components/shell/shell";
 import { Section } from "@/components/ui/section";
-import { Reveal } from "@/components/ui/reveal";
 import { Zoomable } from "@/components/drawings/zoomable";
 import { IllustrationTiles } from "@/components/drawings/illustration-tiles";
 import { Figures } from "@/components/hairline/figures";
@@ -36,19 +35,6 @@ const treatment = [
 export default function ImageryPage() {
   return (
     <Shell pathname="/imagery" title="Imagery">
-      <section id="overview" aria-labelledby="overview-title" className="py-12 md:py-19">
-        <Reveal>
-          <h2 id="overview-title" className="text-[13px] tracking-[-0.01em] text-ui-text-2">
-            Overview
-          </h2>
-          <p className="max-w-[900px] pt-5 text-2xl leading-[1.28] tracking-[-0.025em] md:text-3xl">
-            Photos show the real thing. Linework explains it. Candid&apos;s imagery puts real plants, sites and
-            people next to the drawings we make, and often marks up one with the other, the way an engineer
-            would.
-          </p>
-        </Reveal>
-      </section>
-
       <Section
         id="principles"
         title="Principles"
@@ -98,7 +84,7 @@ export default function ImageryPage() {
       <Section
         id="sources"
         title="Where they come from"
-        description="Plotter's drafting grammar sets the rules for how every illustration looks. Hairline (MIT licensed) draws the interactive versions for the website. Every Candid subject, like a turbine or a site, is drawn custom so it is specific to our work."
+        description="Plotter's drafting grammar sets the rules for how every illustration looks. Hairline (MIT licensed) draws the interactive versions for the website. Every Candid Intelligence subject, like a turbine or a site, is drawn custom so it is specific to our work."
       />
 
       <Section

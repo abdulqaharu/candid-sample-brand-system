@@ -28,6 +28,9 @@ export function Search({ shortcut = false }: { shortcut?: boolean }) {
     const onKey = (event: KeyboardEvent) => {
       const target = event.target as HTMLElement;
       if (event.key !== "/" || target.closest("input, textarea, [contenteditable]")) return;
+      // Nothing opens over the intro.
+      if (target.ownerDocument.documentElement.classList.contains("candid-intro")) return;
+      if (target.ownerDocument.querySelector("dialog[open]")) return;
       // The sidebar is hidden on small screens, where there is nothing to open.
       if (!dialog.current?.parentElement?.offsetParent || dialog.current.open) return;
       event.preventDefault();

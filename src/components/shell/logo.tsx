@@ -1,19 +1,16 @@
 import Link from "next/link";
-import { Asset } from "@/components/ui/asset";
+import Image from "next/image";
 
 export function Logo({ className }: { className: string }) {
   return (
     <Link
       href="/"
       aria-label="Candid, introduction"
-      className={`relative block shrink-0 overflow-hidden ${className}`}
+      // The first-visit intro lands its mark exactly here.
+      data-brand-mark
+      className={`block shrink-0 ${className}`}
     >
-      <Asset
-        name="6e1f2.png"
-        width={1024}
-        height={1024}
-        className="absolute top-[-17.8%] left-[-21.21%] h-[140.2%] w-[146.82%] max-w-none"
-      />
+      <Image src="/brand/candid-mark.svg" alt="" width={62} height={65} unoptimized className="size-full" />
     </Link>
   );
 }

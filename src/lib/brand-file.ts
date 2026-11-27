@@ -10,13 +10,13 @@ export function paletteFile() {
 
 export function brandFile() {
   const colors = paletteList.map((c) => `- ${c.name}: ${c.hex}`).join("\n");
-  return `# Candid brand system
+  return `# Candid  Intelligence brand system
 
 Sample for review, November 2026.
 
 ## Who we are
 
-Candid is an owner's engineering firm for gas-fired power. We take projects from concept to final investment decision in weeks, not months. Software tests every configuration for a site, current vendor quotes keep cost and schedule honest, and PE-licensed engineers stamp the package in the owner's own format. We have offices in Houston and San Francisco.
+Candid  Intelligence is an owner's engineering firm for gas-fired power. We take projects from concept to final investment decision in weeks, not months. Software tests every configuration for a site, current vendor quotes keep cost and schedule honest, and PE-licensed engineers stamp the package in the owner's own format. We have offices in Houston and San Francisco.
 
 ## Color
 

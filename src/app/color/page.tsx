@@ -33,7 +33,7 @@ export default function ColorPage() {
         id="palette"
         title="Palette"
         first
-        description="Candid is light by default: warm Paper whites, near-black Ink and one sharp accent. Redline is the color engineers use to mark what changed on a drawing, so we use it the same way: sparingly, to point at what matters. Draft blue is for drawings, charts and data, and Stamp green marks work that is verified."
+        description="Candid Intelligence is light by default: warm Paper whites, near-black Ink and one sharp accent. Redline is the color engineers use to mark what changed on a drawing, so we use it the same way: sparingly, to point at what matters. Draft blue is for drawings, charts and data, and Stamp green marks work that is verified."
       >
         <Palette />
       </Section>
