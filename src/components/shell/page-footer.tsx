@@ -1,41 +1,31 @@
 import Link from "next/link";
-import { getPrevNext, nav } from "@/lib/nav";
+import { getPrevNext } from "@/lib/nav";
+import { HoverSwap } from "@/components/ui/hover-swap";
+
+const cell = "flex min-h-34 flex-col justify-between px-5 py-7 sm:px-10";
+const label = "text-[22px] leading-[1.2] tracking-[-0.03em]";
 
 export function PageFooter({ pathname }: { pathname: string }) {
   const { prev, next } = getPrevNext(pathname);
-  const isLast = pathname === nav[nav.length - 1].href;
-  const nextItem = isLast ? { href: nav[0].href, label: "Back to overview" } : next;
 
   return (
-    <div className="grid grid-cols-1 border-t border-line sm:grid-cols-2">
+    <nav aria-label="Previous and next page" className="grid grid-cols-2">
       {prev ? (
-        <Link
-          href={prev.href}
-          className="flex items-center gap-3 bg-surface px-5 py-8 text-fg hover:text-redline-text focus-visible:outline-draft focus-visible:outline-2 focus-visible:outline-offset-2 sm:px-10"
-        >
-          <span aria-hidden>&larr;</span>
-          <span>
-            <span className="block text-label text-fg-3">Previous</span>
-            <span className="text-[22px]">{prev.label}</span>
-          </span>
+        <Link href={prev.href} rel="prev" className={`group bg-ui-prev ${cell}`}>
+          <span className={label}>{prev.label}</span>
+          <HoverSwap name="f1d0b.svg" size={18} direction="left" />
         </Link>
       ) : (
-        <div className="bg-surface px-5 py-8 sm:px-10" />
+        <div className={`bg-ui-prev ${cell}`} />
       )}
-      {nextItem ? (
-        <Link
-          href={nextItem.href}
-          className="flex items-center justify-between gap-3 bg-raised px-5 py-8 text-fg hover:text-redline-text focus-visible:outline-draft focus-visible:outline-2 focus-visible:outline-offset-2 sm:px-10"
-        >
-          <span>
-            <span className="block text-label text-fg-3">Next</span>
-            <span className="text-[22px]">{nextItem.label}</span>
-          </span>
-          <span aria-hidden>&rarr;</span>
+      {next ? (
+        <Link href={next.href} rel="next" className={`group bg-ui-next ${cell}`}>
+          <span className={label}>{next.label}</span>
+          <HoverSwap name="279a2.svg" size={18} direction="right" />
         </Link>
       ) : (
-        <div className="bg-raised px-5 py-8 sm:px-10" />
+        <div className={`bg-ui-next ${cell}`} />
       )}
-    </div>
+    </nav>
   );
 }

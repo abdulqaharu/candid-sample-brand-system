@@ -1,5 +1,7 @@
 # Candid Brand System: Build Brief
 
+> **Branch `brand-guidelines`:** the site on this branch follows the Figma section "Candid Brand Guidelines" (node 70:2): nine light-only pages, new copy and new site neutrals (the `--ui-*` tokens in `globals.css`). Where that design and this brief disagree, the design wins on this branch. The sections below still describe the six-page version and have not been rewritten.
+
 This brief tells a coding agent everything it needs to build the Candid brand system sample as a website. The source design is a Figma file (page "Candid Brand System (Sample)"). This document is the source of truth for tokens, structure, copy and behavior.
 
 ---

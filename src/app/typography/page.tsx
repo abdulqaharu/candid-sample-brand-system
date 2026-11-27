@@ -1,90 +1,138 @@
+import type { Metadata } from "next";
 import { Shell } from "@/components/shell/shell";
-import { Row } from "@/components/ui/row";
-import { Eyebrow } from "@/components/ui/eyebrow";
-import { Card } from "@/components/ui/card";
-import { ThemeSwitcher } from "@/components/shell/theme-switcher";
-import { typeScale } from "@/lib/tokens";
+import { Section } from "@/components/ui/section";
+import { Asset } from "@/components/ui/asset";
+import { TypeTester } from "@/components/typography/type-tester";
 
-const alphabet = "A to Z, a to z, 0 to 9, ±%$";
+export const metadata: Metadata = { title: "Typography" };
 
-const rules = [
-  { code: "T1", title: "Mono, sparingly", body: "Only on drawings, deliverable codes and token names. Never for headlines, stats or sentences." },
-  { code: "T2", title: "Numbers carry units", body: "Write 4 weeks, ±15%, 500 MW. Give the stage with any accuracy claim." },
-  { code: "T3", title: "Sentence case", body: "Headlines in sentence case. Small labels in uppercase Geist Medium, tracked +4%." },
-  { code: "T4", title: "One display line", body: "Use a Display style once per page or slide. Let it carry the message." },
+const hierarchy = [
+  {
+    name: "Display",
+    weight: "Medium",
+    size: "64px",
+    leading: "1",
+    tracking: "−2.5%",
+    sample: "Pre-FEED in 4 weeks.",
+    className: "text-[clamp(2.25rem,6vw,4rem)] leading-none font-medium tracking-[-0.025em]",
+  },
+  {
+    name: "Heading",
+    weight: "Medium",
+    size: "40px",
+    leading: "1.1",
+    tracking: "−1.5%",
+    sample: "Backtested against built plants",
+    className: "text-[clamp(1.75rem,4vw,2.5rem)] leading-[1.1] font-medium tracking-[-0.015em]",
+  },
+  {
+    name: "Subheading",
+    weight: "Medium",
+    size: "24px",
+    leading: "1.25",
+    tracking: "0%",
+    sample: "PE-stamped, in your format",
+    className: "text-2xl leading-[1.25] font-medium",
+  },
+  {
+    name: "Body",
+    weight: "Regular",
+    size: "16px",
+    leading: "1.4",
+    tracking: "0%",
+    sample:
+      "Software tests every configuration for your site, and engineers take the best one to the next gate. Let the headings above do the shouting.",
+    className: "max-w-[606px] text-base leading-[1.4]",
+  },
+  {
+    name: "Caption",
+    weight: "Regular",
+    size: "12px",
+    leading: "1.4",
+    tracking: "1%",
+    sample: "D05 plot plan · Rev B · Site A",
+    className: "text-xs leading-[1.4] tracking-[0.01em]",
+  },
 ];
 
 export default function TypographyPage() {
   return (
-    <Shell
-      pathname="/typography"
-      title={<h1 className="text-display-l font-medium text-fg">Typography</h1>}
-    >
-      <div className="flex justify-end pt-10">
-        <ThemeSwitcher />
-      </div>
-
-      <Row eyebrow="01 / Families" title="Typefaces.">
-        Geist does almost all the work: headlines, body copy, labels and
-        numbers. Geist Mono is used sparingly, only where an engineer would
-        expect it: drawing annotations, deliverable codes and token names.
-        Both are free and open source.
-      </Row>
-      <div className="grid grid-cols-1 gap-4 pb-10 sm:grid-cols-2">
-        <Card>
-          <p className="text-display-xl font-medium text-fg">Aa</p>
-          <p className="mt-4 text-h3 text-fg">Geist</p>
-          <p className="mt-1 text-body-s text-fg-2">
-            Headlines, body copy, labels and numbers
-          </p>
-          <p className="mt-4 text-body-s text-fg-3">{alphabet}</p>
-        </Card>
-        <Card>
-          <p className="font-mono text-display-xl font-medium text-fg">D05</p>
-          <p className="mt-4 text-h3 text-fg">Geist Mono</p>
-          <p className="mt-1 text-body-s text-fg-2">
-            Drawing annotations and deliverable codes only
-          </p>
-          <p className="mt-4 font-mono text-body-s text-fg-3">{alphabet}</p>
-        </Card>
-      </div>
-
-      <Row eyebrow="02 / Scale" title="Type scale.">
-        Twelve styles cover every deck, document and page. Only two are mono,
-        and they stay on drawings and codes. Each one is a Figma text style
-        and a code token, so design and the website stay in sync.
-      </Row>
-      <div className="flex flex-col divide-y divide-line pb-10">
-        {typeScale.map((row) => (
-          <div key={row.name} className="flex flex-col gap-4 py-6 sm:flex-row">
-            <div className="w-full sm:w-[300px] sm:flex-shrink-0">
-              <p className="text-[16px] font-medium text-fg">{row.name}</p>
-              <p className="mt-1 text-label text-fg-3">{row.spec}</p>
+    <Shell pathname="/typography" title="Typography">
+      <Section
+        id="typeface"
+        title="Typeface"
+        first
+        description="Our typeface is Geist, a clean, modern sans serif that is free and open source. It is used for headlines, body copy, labels and numbers across all of Candid's materials. Geist Mono is used sparingly, only on drawing annotations and deliverable codes such as D05."
+      >
+        <div className="grid overflow-hidden rounded-lg bg-ui-panel lg:min-h-119 lg:grid-cols-[7fr_5fr]">
+          <div className="flex min-w-0 flex-col p-8">
+            <p className="text-xs text-ui-muted">Primary</p>
+            <p className="pt-3 text-[clamp(4.5rem,11vw,8.4rem)] leading-[0.92] font-medium tracking-[-0.04em]">
+              Geist
+            </p>
+            <div className="pt-9 text-[clamp(0.9rem,2.2vw,1.68rem)] leading-[1.45] tracking-[-0.015em] wrap-break-word text-ui-text-2">
+              <p>ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+              <p>abcdefghijklmnopqrstuvwxyz</p>
+              <p>0123456789</p>
             </div>
-            <div className="min-w-0 flex-1">
-              <p
-                className={`${row.tailwind} ${row.mono ? "font-mono" : ""} ${row.upper ? "uppercase" : ""} font-medium text-fg`}
-              >
-                {row.sample}
-              </p>
-            </div>
+            <dl className="mt-auto border-t border-ui-text/8 pt-6 max-lg:mt-10">
+              <dt className="text-xs text-ui-muted">Classification</dt>
+              <dd className="pt-1.5 text-base tracking-[-0.015em]">Modern grotesque</dd>
+            </dl>
           </div>
-        ))}
-      </div>
+          <div className="grid h-80 grid-cols-2 lg:h-auto">
+            {[
+              ["Regular", "bg-ui-panel-2 font-normal"],
+              ["Medium", "bg-ui-next font-medium"],
+            ].map(([weight, className]) => (
+              <div key={weight} className={`relative overflow-hidden ${className}`}>
+                <p className="absolute top-3 left-3 text-[13px] font-normal text-ui-text-2">{weight}</p>
+                <p
+                  aria-hidden
+                  className="absolute -bottom-21 -left-6 text-[384px] leading-none tracking-normal"
+                >
+                  a
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
 
-      <Row eyebrow="03 / Usage" title="Rules.">
-        A few rules keep the system consistent, even when someone outside
-        design builds the slide.
-      </Row>
-      <div className="grid grid-cols-1 gap-4 pb-10 sm:grid-cols-2 lg:grid-cols-4">
-        {rules.map((rule) => (
-          <Card key={rule.code}>
-            <Eyebrow>{rule.code}</Eyebrow>
-            <h4 className="mt-3 text-h3 text-fg">{rule.title}</h4>
-            <p className="mt-2 text-body-s text-fg-2">{rule.body}</p>
-          </Card>
-        ))}
-      </div>
+      <Section id="try-it" title="Try it">
+        <TypeTester />
+      </Section>
+
+      <Section
+        id="hierarchy"
+        title="Hierarchy"
+        description="Hierarchy shows readers where to focus. Headlines use Geist Medium with tight tracking, clearly larger than body copy. Body copy uses Geist Regular at a comfortable size. Headlines are in sentence case, and every number carries its unit and, where it matters, its project stage."
+      >
+        <ul className="border-b border-ui-rule">
+          {hierarchy.map((row) => (
+            <li key={row.name} className="grid gap-4 border-t border-ui-rule py-9 md:grid-cols-[180px_1fr] md:gap-10">
+              <div className="text-[12.5px] leading-normal tracking-[-0.01em] text-ui-muted">
+                <p className="text-[13.5px] font-medium text-ui-text">{row.name}</p>
+                <p>{row.weight}</p>
+                <p className="flex items-center gap-2.5">
+                  {row.size}
+                  <span className="flex items-center gap-0.75">
+                    <Asset name="48789.svg" width={11} height={11} />
+                    <span className="sr-only">Line height</span>
+                    {row.leading}
+                  </span>
+                  <span className="flex items-center gap-0.75">
+                    <Asset name="1e3c9.svg" width={11} height={11} />
+                    <span className="sr-only">Tracking</span>
+                    {row.tracking}
+                  </span>
+                </p>
+              </div>
+              <p className={row.className}>{row.sample}</p>
+            </li>
+          ))}
+        </ul>
+      </Section>
     </Shell>
   );
 }

@@ -11,7 +11,7 @@
   --ink-400: #8a8a85;
   --ink-300: #b4b4ae;
   --paper-200: #dcdcd5;
-  --paper-100: #ececE6;
+  --paper-100: #ecece6;
   --paper-50: #f6f6f2;
   --redline-600: #c8401c;
   --redline-500: #f2542d;
@@ -63,7 +63,27 @@
 
 [data-theme] {
   --grid-minor: color-mix(in oklab, var(--border-default) 55%, transparent);
-  --grid-major: var(--border-default);
+}
+
+/* Site chrome, light only. Values come from the "Candid Brand Guidelines" Figma section. */
+:root {
+  --ui-page: #f4f4f4;
+  --ui-rail: #f6f6f6;
+  --ui-panel: #ececec;
+  --ui-panel-2: #e4e4e4;
+  --ui-prev: #e9e9e9;
+  --ui-next: #dedede;
+  --ui-track: #d4d4d4;
+  --ui-block: #d9d9dc;
+  --ui-mailbar: #f1f1f1;
+  --ui-rule: #e8e8e8;
+  --ui-underline: #cfcfcf;
+  --ui-text: #111111;
+  --ui-text-2: #5c5c5c;
+  --ui-muted: #707070;
+  --ui-white: #ffffff;
+  --redline-300: #f8b091;
+  --redline-200: #fbd4c3;
 }
 
 @theme inline {
@@ -85,87 +105,39 @@
   --color-verified: var(--status-verified);
   --color-drawing: var(--line-drawing);
 
-  --text-display-xl: clamp(4.5rem, 10vw, 9rem);
-  --text-display-xl--line-height: 0.92;
-  --text-display-xl--letter-spacing: -0.04em;
+  --color-ui-page: var(--ui-page);
+  --color-ui-rail: var(--ui-rail);
+  --color-ui-panel: var(--ui-panel);
+  --color-ui-panel-2: var(--ui-panel-2);
+  --color-ui-prev: var(--ui-prev);
+  --color-ui-next: var(--ui-next);
+  --color-ui-track: var(--ui-track);
+  --color-ui-block: var(--ui-block);
+  --color-ui-mailbar: var(--ui-mailbar);
+  --color-ui-rule: var(--ui-rule);
+  --color-ui-underline: var(--ui-underline);
+  --color-ui-text: var(--ui-text);
+  --color-ui-text-2: var(--ui-text-2);
+  --color-ui-muted: var(--ui-muted);
+  --color-ui-white: var(--ui-white);
 
-  --text-display-l: clamp(3.5rem, 7.5vw, 6rem);
-  --text-display-l--line-height: 0.98;
-  --text-display-l--letter-spacing: -0.03em;
-
-  --text-h1: clamp(2.5rem, 4.4vw, 3.5rem);
-  --text-h1--line-height: 1.05;
-  --text-h1--letter-spacing: -0.02em;
-
-  --text-h2: clamp(1.75rem, 2.8vw, 2.25rem);
-  --text-h2--line-height: 1.15;
-  --text-h2--letter-spacing: -0.015em;
-
-  --text-h3: 1.5rem;
-  --text-h3--line-height: 1.25;
-  --text-h3--letter-spacing: -0.005em;
-
-  --text-body-l: 1.25rem;
-  --text-body-l--line-height: 1.5;
-  --text-body-l--letter-spacing: -0.002em;
-
-  --text-body-m: 1rem;
-  --text-body-m--line-height: 1.55;
-
-  --text-body-s: 0.875rem;
-  --text-body-s--line-height: 1.5;
-
-  --text-label: 0.75rem;
-  --text-label--line-height: 1.4;
-  --text-label--letter-spacing: 0.04em;
-
-  --text-label-mono: 0.75rem;
-  --text-label-mono--line-height: 1.4;
-  --text-label-mono--letter-spacing: 0.08em;
-
-  --text-code: 0.875rem;
-  --text-code--line-height: 1.5;
-
-  --text-stat: clamp(2.75rem, 5vw, 4rem);
-  --text-stat--line-height: 1;
-  --text-stat--letter-spacing: -0.03em;
-}
-
-.theme-scope {
-  background-color: var(--bg-canvas);
-  color: var(--text-primary);
-}
-
-.bg-blueprint {
-  background-image:
-    repeating-linear-gradient(
-      to right,
-      var(--grid-major) 0,
-      var(--grid-major) 1px,
-      transparent 1px,
-      transparent 200px
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      var(--grid-major) 0,
-      var(--grid-major) 1px,
-      transparent 1px,
-      transparent 200px
-    ),
-    repeating-linear-gradient(
-      to right,
-      var(--grid-minor) 0,
-      var(--grid-minor) 1px,
-      transparent 1px,
-      transparent 40px
-    ),
-    repeating-linear-gradient(
-      to bottom,
-      var(--grid-minor) 0,
-      var(--grid-minor) 1px,
-      transparent 1px,
-      transparent 40px
-    );
+  /* Fixed brand colors, for swatches and artwork that never change with theme. */
+  --color-brand-ink: var(--ink-950);
+  --color-brand-ink-600: var(--ink-600);
+  --color-brand-ink-500: var(--ink-500);
+  --color-brand-ink-400: var(--ink-400);
+  --color-brand-ink-300: var(--ink-300);
+  --color-brand-paper: var(--paper-50);
+  --color-brand-paper-100: var(--paper-100);
+  --color-brand-paper-200: var(--paper-200);
+  --color-brand-redline: var(--redline-500);
+  --color-brand-redline-600: var(--redline-600);
+  --color-brand-redline-400: var(--redline-400);
+  --color-brand-redline-300: var(--redline-300);
+  --color-brand-redline-200: var(--redline-200);
+  --color-brand-draft-600: var(--draft-600);
+  --color-brand-draft-300: var(--draft-300);
+  --color-brand-stamp-600: var(--stamp-600);
 }
 
 ::selection {
@@ -173,14 +145,22 @@
   color: var(--ink-950);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background-color: var(--bg-canvas);
-  color: var(--text-primary);
-  transition: background-color 200ms ease, color 200ms ease;
+  background-color: var(--ui-page);
+  color: var(--ui-text);
+}
+
+:focus-visible {
+  outline: 2px solid var(--draft-600);
+  outline-offset: 2px;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body {
-    transition: none;
+  html {
+    scroll-behavior: auto;
   }
 }

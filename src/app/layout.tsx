@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Sidebar } from "@/components/shell/sidebar";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,21 +14,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Candid Brand System, sample",
-  description: "A sample brand system for Candid, an owner's engineering firm for gas-fired power.",
+  title: { default: "Candid brand system, sample", template: "%s | Candid brand system" },
+  description: "Sample brand system for Candid, an owner's engineering firm for gas-fired power.",
 };
-
-const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem("candid-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}})()`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" data-theme="light" suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: THEME_SCRIPT }} />
-      </head>
+    <html lang="en" data-theme="light" data-scroll-behavior="smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-full font-sans antialiased bg-canvas text-fg`}
+        className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col font-sans antialiased lg:flex-row`}
       >
+        <Sidebar />
         {children}
       </body>
     </html>
