@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { nav } from "@/lib/nav";
 import { Asset } from "@/components/ui/asset";
@@ -12,6 +13,7 @@ const entries = nav.flatMap((page) => [
 
 export function Search({ shortcut = false }: { shortcut?: boolean }) {
   const dialog = useRef<HTMLDialogElement>(null);
+  const pathname = usePathname();
   const [query, setQuery] = useState("");
   const term = query.trim().toLowerCase();
   const results = entries.filter((e) => `${e.label} ${e.page}`.toLowerCase().includes(term));
@@ -50,6 +52,7 @@ export function Search({ shortcut = false }: { shortcut?: boolean }) {
       <dialog
         ref={dialog}
         aria-label="Search the system"
+        data-lenis-prevent
         onClick={(e) => e.target === e.currentTarget && dialog.current?.close()}
         className="mx-auto mt-[12vh] w-[min(560px,calc(100%-32px))] rounded-xl bg-ui-white p-0 text-ui-text shadow-2xl backdrop:bg-brand-ink/20"
       >
@@ -62,11 +65,12 @@ export function Search({ shortcut = false }: { shortcut?: boolean }) {
           aria-label="Search the system"
           className="w-full border-b border-ui-rule px-5 py-4 text-base"
         />
-        <ul className="max-h-[50vh] overflow-y-auto p-2">
+        <ul className="scrollbar-hover max-h-[50vh] overflow-y-auto p-2">
           {results.map((result) => (
             <li key={result.href}>
               <Link
                 href={result.href}
+                scroll={!result.href.startsWith(`${pathname}#`)}
                 onClick={() => dialog.current?.close()}
                 className="flex justify-between gap-4 rounded-md px-3 py-2 text-sm hover:bg-ui-panel"
               >

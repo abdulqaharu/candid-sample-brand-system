@@ -2,70 +2,20 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
-import { nav, type NavSection } from "@/lib/nav";
+import { useRef, useState } from "react";
+import { nav } from "@/lib/nav";
 import { Asset } from "@/components/ui/asset";
+import { Logo } from "./logo";
 import { NavLine } from "./nav-line";
 import { Search } from "./search";
-
-/** The section being read: the last one whose top has passed the upper part of the view. */
-function useActiveSection(sections: NavSection[]) {
-  const [active, setActive] = useState<string>();
-
-  useEffect(() => {
-    const update = () => {
-      const atEnd = window.innerHeight + window.scrollY >= document.body.scrollHeight - 2;
-      let current = sections[0]?.id;
-      for (const { id } of sections) {
-        const element = document.getElementById(id);
-        if (element && element.getBoundingClientRect().top <= window.innerHeight * 0.4) current = id;
-      }
-      setActive(atEnd && window.scrollY > 0 ? sections[sections.length - 1]?.id : current);
-    };
-    const frame = requestAnimationFrame(update);
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-    };
-  }, [sections]);
-
-  return active;
-}
-
-function Logo() {
-  return (
-    <Link href="/" aria-label="Candid, introduction" className="relative block h-16 w-[61px] overflow-hidden">
-      <Asset
-        name="6e1f2.png"
-        width={1024}
-        height={1024}
-        className="absolute top-[-17.8%] left-[-21.21%] h-[140.2%] w-[146.82%] max-w-none"
-      />
-    </Link>
-  );
-}
-
-function ToggleIcon() {
-  return (
-    <span aria-hidden className="relative block size-4.5">
-      <span
-        className="absolute inset-[8.33%_8.46%_8.33%_8.2%] mask-alpha mask-intersect mask-no-clip mask-no-repeat mask-position-[-1.477px_-1.5px] mask-size-[18px_18px]"
-        style={{ maskImage: 'url("/brand/78b25.svg")' }}
-      >
-        <span className="absolute inset-[-5%]">
-          <Asset name="c0bb1.svg" width={17} height={17} className="block size-full max-w-none" />
-        </span>
-      </span>
-    </span>
-  );
-}
+import { SidebarHandle } from "./sidebar-handle";
+import { SidebarRail } from "./sidebar-rail";
+import { CollapseButton } from "./sidebar-toggle";
+import { SidebarToolbar } from "./sidebar-toolbar";
+import { useActiveSection } from "./use-active-section";
 
 export function Sidebar() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(true);
   const page = nav.find((item) => item.href === pathname) ?? nav[0];
   const activeSection = useActiveSection(page.sections);
   const list = useRef<HTMLDivElement>(null);
@@ -80,18 +30,12 @@ export function Sidebar() {
 
   return (
     <>
-      {open ? (
-        <aside className="sticky top-0 hidden h-screen w-58 shrink-0 flex-col overflow-y-auto border-r border-brand-paper-200 bg-ui-rail lg:flex">
+      <aside className="sidebar-motion sticky top-0 z-20 hidden h-screen w-(--sidebar-width) shrink-0 overflow-clip border-r border-brand-paper-200 bg-ui-rail lg:block collapsed:overflow-visible">
+        <SidebarRail pathname={page.href} />
+        <div data-lenis-prevent className="scrollbar-hover flex h-full w-58 flex-col overflow-y-auto [scrollbar-gutter:auto] collapsed:hidden">
           <div className="relative px-5 pt-6">
-            <Logo />
-            <button
-              type="button"
-              onClick={() => setOpen(false)}
-              aria-label="Hide sidebar"
-              className="absolute top-9.5 right-3.5 flex size-7 cursor-pointer items-center justify-center rounded-md"
-            >
-              <ToggleIcon />
-            </button>
+            <Logo className="h-16 w-[61px]" />
+            <CollapseButton className="absolute top-9.5 right-3.5" />
             <div className="pt-8">
               <Search shortcut />
             </div>
@@ -126,6 +70,7 @@ export function Sidebar() {
                         <li key={section.id}>
                           <Link
                             href={`${item.href}#${section.id}`}
+                            scroll={false}
                             data-nav={`${item.href}#${section.id}`}
                             aria-current={activeSection === section.id ? "location" : undefined}
                             className="block rounded-md px-1 py-1.25 text-[13px] leading-normal tracking-[-0.01em] text-ui-text/55 hover:text-ui-text aria-[current=location]:font-medium aria-[current=location]:text-ui-text"
@@ -144,6 +89,7 @@ export function Sidebar() {
           <div className="mt-auto flex flex-col gap-1.5 px-5 pb-5">
             <Link
               href="/resources#downloads"
+              scroll={pathname !== "/resources"}
               className="mb-3 flex h-9 shrink-0 items-center justify-center gap-1.5 rounded-[9px] bg-ui-text/6 text-[13px] font-medium tracking-[-0.015em] hover:bg-ui-text/10"
             >
               <Asset name="bfdaa.svg" width={14} height={14} />
@@ -151,21 +97,14 @@ export function Sidebar() {
             </Link>
             <p className="text-[11.5px] tracking-[-0.01em] text-ui-muted">Sample, Nov 2026</p>
           </div>
-        </aside>
-      ) : (
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          aria-label="Show sidebar"
-          className="fixed top-4 left-4 z-20 hidden size-9 cursor-pointer items-center justify-center rounded-lg bg-ui-rail shadow lg:flex"
-        >
-          <ToggleIcon />
-        </button>
-      )}
+        </div>
+      </aside>
+      <SidebarHandle />
+      <SidebarToolbar />
 
       <div className="border-b border-brand-paper-200 bg-ui-rail lg:hidden">
         <div className="flex items-center justify-between gap-4 px-5 pt-4">
-          <Logo />
+          <Logo className="h-16 w-[61px]" />
           <div className="w-48">
             <Search />
           </div>

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Sidebar } from "@/components/shell/sidebar";
+import { SmoothScroll } from "@/components/shell/smooth-scroll";
+import { sidebarScript } from "@/lib/sidebar-script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -20,10 +22,24 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" data-theme="light" data-scroll-behavior="smooth">
+    <html
+      lang="en"
+      className="scrollbar-hover"
+      data-theme="light"
+      data-sidebar="expanded"
+      // The script below can change data-sidebar before React starts.
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: sidebarScript }} />
+        <noscript>
+          <style>{"[data-reveal]{opacity:1!important;transform:none!important}"}</style>
+        </noscript>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} flex min-h-screen flex-col font-sans antialiased lg:flex-row`}
       >
+        <SmoothScroll />
         <Sidebar />
         {children}
       </body>

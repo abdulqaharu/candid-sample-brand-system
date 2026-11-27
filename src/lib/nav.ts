@@ -58,7 +58,18 @@ export const nav: NavItem[] = [
   {
     href: "/applications",
     label: "Applications",
-    sections: [{ id: "email-signature", label: "Email signature" }],
+    sections: [
+      { id: "website", label: "Website" },
+      { id: "one-pager", label: "One-pager" },
+      { id: "pitch-deck", label: "Pitch deck" },
+      { id: "cover-sheet", label: "Deliverable cover sheet" },
+      { id: "case-study", label: "Case study" },
+      { id: "linkedin", label: "LinkedIn" },
+      { id: "event-booth", label: "Event booth" },
+      { id: "business-card", label: "Business card" },
+      { id: "proposal-cover", label: "Proposal cover" },
+      { id: "email-signature", label: "Email signature" },
+    ],
   },
   { href: "/resources", label: "Resources", sections: [{ id: "downloads", label: "Downloads" }] },
 ];

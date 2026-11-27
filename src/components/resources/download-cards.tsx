@@ -6,7 +6,7 @@ import { Asset } from "@/components/ui/asset";
 import { HoverSwap } from "@/components/ui/hover-swap";
 
 // TODO: add the link to the Figma templates file. The "Open" action stays hidden until it is set.
-const TEMPLATES_URL: string | null = null;
+const TEMPLATES_URL: string | null = "https://www.figma.com/design/mRPZGYJ6eHGhMseDuGFtFe/Candid?node-id=2-5";
 
 const action =
   "group inline-flex cursor-pointer items-center gap-1.5 self-start border-b border-ui-underline pb-0.5 text-base leading-5 tracking-[-0.015em]";
@@ -101,7 +101,7 @@ export function DownloadCards() {
         detail="Decks and one-pagers, in Figma"
         icon={<Asset name="4d5ea.svg" width={17} height={25} />}
       >
-        {TEMPLATES_URL && <External href={TEMPLATES_URL} label="Open" />}
+        {TEMPLATES_URL && <External href={TEMPLATES_URL} label="View in Figma" />}
       </Card>
     </ul>
   );

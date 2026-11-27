@@ -19,6 +19,7 @@ export function Zoomable({ label, children }: { label: string; children: ReactNo
       <dialog
         ref={dialog}
         aria-label={label}
+        data-lenis-prevent
         onClick={() => dialog.current?.close()}
         className="m-auto w-[96vw] max-w-[min(96vw,160vh)] cursor-zoom-out overflow-hidden rounded-lg bg-transparent p-0 backdrop:bg-brand-ink/85"
       >

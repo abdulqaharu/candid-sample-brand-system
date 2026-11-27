@@ -1,4 +1,5 @@
 import { Shell } from "@/components/shell/shell";
+import { PageTitle } from "@/components/ui/page-title";
 import { Section } from "@/components/ui/section";
 
 export default function IntroductionPage() {
@@ -6,7 +7,7 @@ export default function IntroductionPage() {
     <Shell
       pathname="/"
       hero={
-        <header className="flex min-h-[min(100svh,922px)] flex-col justify-between gap-16 overflow-hidden bg-brand-redline px-5 pt-8 pb-10 text-ui-white sm:px-10">
+        <header className="flex min-h-[min(100svh,922px)] flex-col justify-between gap-16 overflow-hidden bg-brand-redline px-5 pt-8 pb-10 text-ui-white sm:px-10 lg:collapsed:pt-24">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <p>
               <span className="block text-[17px] leading-normal font-semibold tracking-[-0.03em]">Candid</span>
@@ -16,11 +17,10 @@ export default function IntroductionPage() {
             </p>
             <p className="pt-1.5 text-[13px] tracking-[-0.01em] opacity-80">Sample for review, November 2026</p>
           </div>
-          <h1 className="text-[clamp(3.25rem,13vw,10.5rem)] leading-[0.9] font-medium tracking-[-0.055em]">
-            Brand
-            <br />
-            System
-          </h1>
+          <PageTitle
+            lines={["Brand", "System"]}
+            className="text-[clamp(3.25rem,13vw,10.5rem)] leading-[0.9] font-medium tracking-[-0.055em]"
+          />
         </header>
       }
     >

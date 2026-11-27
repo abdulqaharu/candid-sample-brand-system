@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Reveal } from "./reveal";
 
 export function Section({
   id,
@@ -22,7 +23,7 @@ export function Section({
       aria-labelledby={`${id}-title`}
       className={`border-t ${first ? "border-transparent" : "border-ui-rule"} ${children ? "pb-19" : ""}`}
     >
-      <div className="grid gap-6 py-12 md:grid-cols-2 md:py-19">
+      <Reveal className="grid gap-6 py-12 md:grid-cols-2 md:py-19">
         <h2 id={`${id}-title`} className="text-2xl leading-[1.2] font-medium tracking-[-0.025em]">
           {title}
         </h2>
@@ -30,8 +31,12 @@ export function Section({
           {description && <Lead>{description}</Lead>}
           {aside}
         </div>
-      </div>
-      {children && <div className="md:pt-14">{children}</div>}
+      </Reveal>
+      {children && (
+        <Reveal delay={0.08} className="md:pt-14">
+          {children}
+        </Reveal>
+      )}
     </section>
   );
 }
