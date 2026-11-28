@@ -213,6 +213,12 @@ html[data-dragging] {
   }
 }
 
+/* Fades a sideways-scrolling row out at its left and right edges. The fade is as
+   wide as the row's px-5, so nothing is faded when scrolled fully to either end. */
+@utility fade-x {
+  mask-image: linear-gradient(to right, transparent, #000 1.25rem, #000 calc(100% - 1.25rem), transparent);
+}
+
 /* The first-visit intro. The class is set before first paint, in <head>. */
 .intro-root {
   display: none;

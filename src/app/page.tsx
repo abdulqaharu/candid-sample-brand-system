@@ -7,7 +7,7 @@ export default function IntroductionPage() {
     <Shell
       pathname="/"
       hero={
-        <header className="flex min-h-[min(100svh,922px)] flex-col justify-between gap-16 overflow-hidden bg-brand-redline px-5 pt-8 pb-10 text-ui-white sm:px-10 lg:collapsed:pt-24">
+        <header className="flex min-h-[calc(50vh)] sm:min-h-[min(100svh,922px)] flex-col justify-between gap-16 overflow-hidden bg-brand-redline px-5 pt-8 pb-10 text-ui-white sm:px-10 lg:collapsed:pt-24">
           <div className="flex flex-wrap items-start justify-between gap-4">
             <p>
               <span className="block text-[17px] leading-normal font-semibold tracking-[-0.03em]">Candid Intelligence</span>

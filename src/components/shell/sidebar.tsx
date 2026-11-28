@@ -102,14 +102,14 @@ export function Sidebar() {
       <SidebarHandle />
       <SidebarToolbar />
 
-      <div className="border-b border-brand-paper-200 bg-ui-rail lg:hidden">
+      <div className="sticky top-0 z-10 sm:static border-b border-brand-paper-200 bg-ui-rail lg:hidden">
         <div className="flex items-center justify-between gap-4 px-5 pt-4">
           <Logo className="h-16 w-[61px]" />
           <div className="w-48">
             <Search />
           </div>
         </div>
-        <nav aria-label="Pages" className="flex gap-5 overflow-x-auto px-5 py-3">
+        <nav aria-label="Pages" className="fade-x flex gap-5 overflow-x-auto px-5 py-5 sm:py-3 mt-2 sm:mt-0">
           {nav.map((item) => (
             <Link
               key={item.href}

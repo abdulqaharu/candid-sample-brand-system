@@ -23,7 +23,7 @@ function Slider({
 }) {
   const fill = ((value - min) / (max - min)) * 100;
   return (
-    <label className="relative flex h-10 flex-1 items-center justify-between overflow-hidden rounded-xl bg-ui-text/4 px-3.5 text-[13px] tracking-[-0.01em] has-focus-visible:outline-2 has-focus-visible:outline-brand-draft-600">
+    <label className="relative flex h-10 shrink-0 items-center justify-between overflow-hidden rounded-xl bg-ui-text/4 px-3.5 text-[13px] tracking-[-0.01em] has-focus-visible:outline-2 has-focus-visible:outline-brand-draft-600 sm:flex-1">
       <span aria-hidden className="absolute inset-y-0 left-0 rounded-xl bg-ui-text/8" style={{ width: `${fill}%` }}>
         <span className="absolute top-2.75 right-2.5 h-4.5 w-0.75 rounded-full bg-ui-text/70" />
       </span>
