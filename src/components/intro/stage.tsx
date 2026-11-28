@@ -232,7 +232,8 @@ export function Stage({
           className="absolute leading-[1.1] font-medium tracking-[-0.01em] text-brand-paper"
           style={{
             left: Math.min(96, Math.max(24, width * 0.06)),
-            bottom: width < 640 ? 140 : Math.min(172, height * 0.19),
+            // Never so low that it meets the progress bar and Skip button.
+            bottom: width < 640 ? 140 : Math.min(172, Math.max(120, height * 0.19)),
             fontSize: Math.min(40, Math.max(28, width * 0.025)),
             opacity: headline,
             y: headlineY,

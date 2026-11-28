@@ -24,7 +24,7 @@ function useOnPhoto(p: MotionValue<number>, layout: Layout, reach: number) {
 
 /** The Skip button. It comes first, so it is the first stop for the keyboard. */
 export function SkipButton({ p, layout, onSkip }: { p: MotionValue<number>; layout: Layout; onSkip: () => void }) {
-  const dark = useOnPhoto(p, layout, Math.max(layout.width / 2 - 104, layout.height / 2 - 47));
+  const dark = useOnPhoto(p, layout, layout.height / 2 - 47);
   const light = useTransform(dark, (v) => 1 - v);
   const opacity = useTransform(p, [...T.chromeOut], [1, 0]);
 
@@ -32,7 +32,7 @@ export function SkipButton({ p, layout, onSkip }: { p: MotionValue<number>; layo
     <motion.button
       type="button"
       onClick={onSkip}
-      className="absolute right-4 bottom-18 z-10 h-8.5 w-32 cursor-pointer rounded-full text-sm leading-none font-medium whitespace-pre sm:right-10 sm:bottom-7.5"
+      className="absolute inset-x-0 bottom-7.5 z-10 mx-auto h-8.5 w-24 cursor-pointer rounded-full text-sm leading-none font-medium whitespace-pre"
       style={{ opacity }}
     >
       <motion.span
@@ -46,14 +46,14 @@ export function SkipButton({ p, layout, onSkip }: { p: MotionValue<number>; layo
         style={{ opacity: dark }}
       />
       <motion.span className="absolute inset-0 flex items-center justify-center text-ui-text" style={{ opacity: light }}>
-        Skip intro{"  "}→
+        Skip intro
       </motion.span>
       <motion.span
         aria-hidden="true"
         className="absolute inset-0 flex items-center justify-center text-brand-paper"
         style={{ opacity: dark }}
       >
-        Skip intro{"  "}→
+        Skip intro
       </motion.span>
     </motion.button>
   );
@@ -61,16 +61,16 @@ export function SkipButton({ p, layout, onSkip }: { p: MotionValue<number>; layo
 
 /**
  * The progress bar. Before the first scroll its place is taken by the invitation
- * to scroll: a bobbing mouse above the word.
+ * to scroll: a bobbing mouse above the word. Both sit above the Skip button.
  */
 export function Progress({ p, layout }: { p: MotionValue<number>; layout: Layout }) {
-  const dark = useOnPhoto(p, layout, layout.height / 2 - 48);
+  const dark = useOnPhoto(p, layout, layout.height / 2 - 85);
   const light = useTransform(dark, (v) => 1 - v);
   const opacity = useTransform(p, [...T.chromeOut], [1, 0]);
   const idle = useIdle(p);
 
   return (
-    <motion.div className="absolute inset-x-0 bottom-11.5" style={{ opacity }}>
+    <motion.div className="absolute inset-x-0 bottom-21" style={{ opacity }}>
       <div
         className={`relative mx-auto h-0.5 w-60 transition-opacity duration-200 ${idle ? "opacity-0" : "opacity-100"}`}
       >
